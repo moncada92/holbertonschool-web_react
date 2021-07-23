@@ -1,39 +1,53 @@
-import React from 'react';
+import React from "react";
 import { StyleSheet, css } from 'aphrodite';
 
-function Login(){
+const Login = () => {
   return (
-    <React.Fragment>
-      <div className={css(style.mediumContainer)}>
-        <p>Login to access the full dashboard</p>
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" className={css(style.loginContainerInput, style.mediumLogin)}/>
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" name="password" className={css(style.loginContainerInput, style.mediumLogin)}/>
-        <button className={css(style.mediumLogin)}>OK</button>
+    <div className="App-login">
+      <div className={css(styles.loginStyle)}>
+        <p className={css(styles.loginPStyle)}>Login to access the full dashboard</p>
+        <form className={css(styles.loginFormStyle)}>
+          <label className={css(styles.smallLabel)}>
+            Email:
+            <input type="text" name="email" />
+          </label>
+          <label className={css(styles.smallLabel)}>
+            Password:
+            <input type="text" nam="password" />
+          </label>
+          <button>OK</button>
+        </form>
       </div>
-    </React.Fragment>
-  )
-}
+    </div>
+  );
+};
 
-const style = StyleSheet.create({
-  loginContainerInput: {
-    marginRight: '9px',
-    marginLeft: '9px',
-  },
-  mediumContainer: {
+const styles = StyleSheet.create({
+  loginStyle: {
+    minHeight: 150,
+    margin: '40px auto 150px auto',
     '@media (max-width: 900px)': {
-        display: 'flex',
-        flexDirection: 'column',
-        width: '100%',
+      minHeight: 0,
+      margin: 0,
     }
   },
-  mediumLogin: {
+
+  loginPStyle: {
+    margin: '3rem 0rem 0rem 2rem',
     '@media (max-width: 900px)': {
-      width: '30%',
-      margin: '9px 0',
+      marginTop: 0,
+    }
+  },
+
+  loginFormStyle: {
+    margin: '1rem 0rem 2rem 2rem',
+  },
+
+  smallLabel: {
+    '@media (max-width: 900px)': {
+        display: 'block',
+    }
   }
-  }
-});
+})
 
 export default Login;

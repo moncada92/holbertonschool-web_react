@@ -1,29 +1,17 @@
-import React from 'react';
-import { getLatestNotification, getFullYear, getFooterCopy } from './utils';
-import { StyleSheetTestUtils } from "aphrodite";
+import {strict as assert} from 'assert'
+import { getFullYear, getFooterCopy, getLatestNotification } from './utils'
 
-describe('Test Utils.js', () => {
-  beforeAll(() => {
-    StyleSheetTestUtils.suppressStyleInjection();
-  });
-  
-  afterAll(() => {
-    StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
-  });
-
-  it('Function getFullYear', (done) => {
-    expect(getFullYear()).toBe(new Date().getFullYear());
-    done();
-  });
-
-  it('Function getFooterCopy', (done) => {
-    expect(getFooterCopy(true)).toBe('Holberton School');
-    expect(getFooterCopy(false)).toBe('Holberton School main dashboard');
-    done();
-  });
-
-  it('Function getLatestNotification', (done) => {
-    expect(getLatestNotification()).toBe('<strong>Urgent requirement</strong> - complete by EOD');
-    done();
-  });
-});
+describe('Test Utils', () => {
+	it('checks return of getFullYear', () => {
+		assert.equal(getFullYear(), 2021)
+	})
+	it('checks return of getFooterCopy with isIndex === true', () => {
+		assert.equal(getFooterCopy(true), 'Holberton School')
+	})
+	it('checks return of getFooterCopy with isIndex === false', () => {
+		assert.equal(getFooterCopy(false), 'Holberton School main dashboard')
+	})
+	it('checks return of getLatestNotification', () => {
+		assert.equal(getLatestNotification(), '<strong>Urgent requirement</strong> - complete by EOD')
+	})
+})
